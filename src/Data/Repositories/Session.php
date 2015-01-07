@@ -230,16 +230,20 @@ class Session extends Repository {
 
     public function periodic($start, $end, $results)
     {
-	    $query = $this
-		            ->getSessions()
-		            ->periodic($start, $end);
+        $query = $this->select(
+            $this->getConnection()->raw('DATE(created_at) as date, count(*) as total')
+        )->groupBy(
+            $this->getConnection()->raw('DATE(created_at)')
+        )
+            ->periodic($start, $end)
+            ->orderBy('date');
 
-	    if ($results)
-	    {
-		    return $query->get();
-	    }
+        if ($results)
+        {
+            return $query->get();
+        }
 
-	    return $query;
+        return $query;
     }
 
     public function users($minutes, $results)
