@@ -477,7 +477,7 @@ class RepositoryManager implements RepositoryManagerInterface {
 
 	public function getSessionsForPeriod($start, $end, $results)
 	{
-		return $this->sessionRepository->periodic($start, $end, $results);
+		return $this->sessionRepository->getSessionsForPeriod($start, $end, $results);
 	}
 
 	public function getAllSessions()
