@@ -512,6 +512,11 @@ class RepositoryManager implements RepositoryManagerInterface {
 		return $this->logRepository->pageViews($minutes, $results);
 	}
 
+	public function pageViewsForPeriod($start, $end, $results)
+	{
+		return $this->logRepository->pageViewsForPeriod($start, $end, $results);
+	}
+
 	public function pageViewsByCountry($minutes, $results)
 	{
 		return $this->logRepository->pageViewsByCountry($minutes, $results);

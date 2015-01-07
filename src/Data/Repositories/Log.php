@@ -88,6 +88,11 @@ class Log extends Repository {
 		 return $this->getModel()->pageViews($minutes, $results);
 	}
 
+	public function pageViewsForPeriod($start, $end, $results)
+	{
+		 return $this->getModel()->pageViewsForPeriod($start, $end, $results);
+	}
+
 	public function pageViewsByCountry($minutes, $results)
 	{
 		 return $this->getModel()->pageViewsByCountry($minutes, $results);

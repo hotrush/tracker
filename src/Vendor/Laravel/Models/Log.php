@@ -80,6 +80,24 @@ class Log extends Base {
 		return $query;
 	}
 
+	public function pageViewsForPeriod($start, $end, $results)
+	{
+		$query = $this->select(
+				$this->getConnection()->raw('DATE(created_at) as date, count(*) as total')
+			)->groupBy(
+				$this->getConnection()->raw('DATE(created_at)')
+			)
+			->periodic($start, $end)
+			->orderBy('date');
+
+		if ($results)
+		{
+			return $query->get();
+		}
+
+		return $query;
+	}
+
 	public function pageViewsByCountry($minutes, $results)
 	{
 		$query =

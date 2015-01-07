@@ -327,6 +327,11 @@ class Tracker
     	return $this->dataRepositoryManager->pageViews(Minutes::make($minutes), $results);
     }
 
+	public function pageViewsForPeriod($start, $end, $results = true)
+    {
+    	return $this->dataRepositoryManager->pageViewsForPeriod($start, $end, $results);
+    }
+
     public function pageViewsByCountry($minutes, $results = true)
     {
     	return $this->dataRepositoryManager->pageViewsByCountry(Minutes::make($minutes), $results);
