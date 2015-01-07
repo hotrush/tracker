@@ -157,4 +157,9 @@ class Event extends Repository {
 	{
 		return $this->getModel()->allInThePeriod($minutes, $results);
 	}
+
+	public function customEventForPeriod($event, $start, $end, $results)
+	{
+		return $this->getModel()->customEventForPeriod($event, $start, $end, $results);
+	}
 }

@@ -352,6 +352,11 @@ class Tracker
 		return $this->dataRepositoryManager->events(Minutes::make($minutes), $results);
 	}
 
+	public function customEventForPeriod($event, $start, $end, $results = true)
+	{
+		return $this->dataRepositoryManager->customEventForPeriod($event, $start, $end, $results);
+	}
+
 	public function errors($minutes, $results = true)
 	{
 		return $this->dataRepositoryManager->errors(Minutes::make($minutes), $results);

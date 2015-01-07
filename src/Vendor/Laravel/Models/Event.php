@@ -53,4 +53,29 @@ class Event extends Base {
 		return $query;
 	}
 
+	public function customEventForPeriod($event, $start, $end, $result)
+	{
+		$query =
+			$this
+				->select(
+					$this->getConnection()->raw('DATE(created_at) as date'),
+					$this->getConnection()->raw('count(tracker_events_log.id) as total')
+				)
+				->from('tracker_events')
+				->periodic($start, $end, 'tracker_events_log')
+				->join('tracker_events_log', 'tracker_events_log.event_id', '=', 'tracker_events.id')
+				->where('tracker_events.name','=',$event)
+				->groupBy(
+					$this->getConnection()->raw('DATE(created_at)')
+				)
+				->orderBy('date');
+
+		if ($result)
+		{
+			return $query->get();
+		}
+
+		return $query;
+	}
+
 }

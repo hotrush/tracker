@@ -552,6 +552,11 @@ class RepositoryManager implements RepositoryManagerInterface {
 		return $this->eventRepository->getAll($minutes, $results);
 	}
 
+	public function customEventForPeriod($event, $start, $end, $results)
+	{
+		return $this->eventRepository->customEventForPeriod($event, $start, $end, $results);
+	}
+
 	public function errors($minutes, $results)
 	{
 		return $this->logRepository->getErrors($minutes, $results);
