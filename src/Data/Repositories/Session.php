@@ -228,6 +228,20 @@ class Session extends Repository {
 	    return $query;
     }
 
+    public function periodic($start, $end, $results)
+    {
+	    $query = $this
+		            ->getSessions()
+		            ->periodic($start, $end);
+
+	    if ($results)
+	    {
+		    return $query->get();
+	    }
+
+	    return $query;
+    }
+
     public function users($minutes, $results)
     {
          return $this->getModel()->users($minutes, $results);

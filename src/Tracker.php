@@ -317,6 +317,11 @@ class Tracker
         return $this->dataRepositoryManager->getLastSessions(Minutes::make($minutes), $results);
     }
 
+    public function sessionsForPeriod($start, $end, $results = true)
+    {
+        return $this->dataRepositoryManager->getSessionsForPeriod($start, $end, $results);
+    }
+
 	public function sessionLog($uuid, $results = true)
 	{
 		return $this->dataRepositoryManager->getSessionLog($uuid, $results);
